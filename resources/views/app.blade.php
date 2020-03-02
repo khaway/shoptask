@@ -11,6 +11,6 @@
 <body>
     <div id="app"></div>
     @shared
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

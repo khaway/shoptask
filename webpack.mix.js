@@ -19,7 +19,7 @@ mix.options({
     ],
 });
 
-mix.js('resources/js/app.js', 'public')
+mix.js('resources/js/app.js', 'public/js')
 
 // mix.postCss('resources/postcss/app.css', 'public/css')
 
