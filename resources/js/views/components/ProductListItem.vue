@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="w-full rounded overflow-hidden shadow-lg mb-6">
-<!--            <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains">-->
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">
                     <router-link :to="{name: 'products.show', params: {id: item.id}}">{{ item.name }}</router-link>
@@ -10,8 +9,9 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
                 </p>
                 <p><i class="fas fa-eye"></i> {{ item.visitsCount }}</p>
+                <p class="font-bold">Quantity - {{ item.quantity }}</p>
             </div>
-            <div class="px-6 py-4">
+            <div class="px-6 py-4" v-if="item.quantity">
                 <span v-on:click="addToCart" class="inline-block bg-green-100 rounded-full px-3 py-1 text-sm font-semibold text-white cursor-pointer">Add to cart {{ item.price }}$</span>
             </div>
         </div>

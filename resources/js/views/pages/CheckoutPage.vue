@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="w-full max-w-lg m-auto">
+        <div class="w-full max-w-lg m-auto" v-if="items.length">
             <h1 class="text-5xl mb-6">Checkout</h1>
             <form  @submit.prevent="checkout">
                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -45,6 +45,7 @@
                 </button>
             </form>
         </div>
+        <div v-if="!items.length">Cart is empty...</div>
     </div>
 </template>
 

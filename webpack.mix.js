@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+const glob = require('glob-all');
+require('laravel-mix-purgecss');
 let tailwindcss = require('tailwindcss');
 
 /*
@@ -21,6 +23,17 @@ mix.options({
 
 mix.js('resources/js/app.js', 'public/js')
 
-// mix.postCss('resources/postcss/app.css', 'public/css')
+mix.postCss('resources/postcss/app.css', 'public/css')
+
+if (process.env.NODE_ENV === 'production') {
+    mix.purgeCss({
+        // Will *only* look for views and simplemde classes
+        paths: () => glob.sync([
+            path.join(__dirname, 'resources/**/*.vue'),
+        ]),
+        whitelistPatterns: [/fa/, /fab/, /icon/, /modal/, /fade/],
+        extractorPattern: /[\w-/:]+(?<!:)/g,
+    });
+}
 
 // mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="w-full max-w-lg m-auto">
+        <div class="w-full max-w-lg m-auto" v-if="items.length">
             <h1 class="text-5xl mb-6">Cart</h1>
             <div class="bg-white shadow-md rounded my-6 mb-6">
                 <table class="text-left w-full">
@@ -21,7 +21,7 @@
                         <cart-item-row v-for="item in items" :item="item" v-bind:key="item.id"></cart-item-row>
                         <tr class="hover:bg-grey-lighter">
                             <td class="py-4 px-6 border-b border-grey-light font-bold">Total</td>
-                            <td class="py-4 px-6 border-b border-grey-light font-bold">{{ totalPrice }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light font-bold">{{ totalPrice }}$</td>
                             <td class="py-4 px-6 border-b border-grey-light font-bold">{{ totalCount }}</td>
                         </tr>
                     </tbody>
@@ -32,6 +32,7 @@
                 Proceed to checkout
             </router-link>
         </div>
+        <div v-if="!items.length">Not items..</div>
     </div>
 </template>
 
