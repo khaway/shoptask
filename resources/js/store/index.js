@@ -19,7 +19,8 @@ export function createStore () {
             paths: [
                 'cart.items',
                 'cart.totalCount',
-                'cart.totalPrice'
+                'cart.totalPrice',
+                'catalog.filters.chosen'
             ]
         })]
     })

@@ -13,21 +13,22 @@
 </template>
 
 <script>
-    import { mapState } from "vuex";
+    import { mapGetters } from "vuex";
     import Sidebar from "../partials/Sidebar";
     import ProductList from "../components/ProductList";
 
     export default {
         components: { Sidebar, ProductList },
         computed: {
-            ...mapState('catalog', ['products'])
+            ...mapGetters('catalog', ['products'])
         },
         watch: {
-            '$route.params.id': function (id) {
+            '$route.params.id': function () {
                 this.loadCategoryProducts(this.routeId());
             }
         },
         mounted() {
+            console.log(this.products);
             this.loadCategoryProducts(this.routeId());
         },
         methods: {

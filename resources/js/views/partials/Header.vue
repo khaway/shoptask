@@ -8,7 +8,7 @@
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div>
                 <router-link to="/cart" class="text-white">
-                    <i class="fas fa-shopping-cart text-white"></i> / {{ cartTotalCount }}
+                    <i class="fas fa-shopping-cart text-white"></i> / {{ totalCount }} / {{ totalPrice }}$
                 </router-link>
             </div>
         </div>
@@ -16,9 +16,11 @@
 </template>
 
 <script>
-    import cartMixin from "../../mixins/cartMixin";
+    import {mapGetters} from "vuex";
 
     export default {
-        mixins: [cartMixin]
+        computed: {
+            ...mapGetters('cart', ['totalPrice', 'totalCount'])
+        },
     }
 </script>

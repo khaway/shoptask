@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return Product::orderBy('created_at', 'desc')->limit(10)->get();
+        return Product::orderBy('created_at', 'desc')->paginate(10);
     }
 
     /**

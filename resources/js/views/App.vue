@@ -16,13 +16,6 @@
         components: {
             AppHeader,
             AppFooter
-        },
-        mounted() {
-            // this.$store.dispatch('catalog/loadProductsCategories', {app: this})
-            // this.$store.dispatch('catalog/loadLastProducts', {
-            //     app: this,
-            //     limit: 10
-            // })
         }
     }
 </script>

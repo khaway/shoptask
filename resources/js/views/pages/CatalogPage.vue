@@ -13,14 +13,14 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex';
+    import { mapGetters } from 'vuex';
     import Sidebar from '../partials/Sidebar';
     import ProductList from "../components/ProductList";
 
     export default {
         components: { Sidebar, ProductList },
         computed: {
-            ...mapState('catalog', ['products'])
+            ...mapGetters('catalog', ['products'])
         },
         created() {
             this.$store.dispatch('catalog/loadLastProducts', {

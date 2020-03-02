@@ -21,12 +21,13 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.12.1",
-        "glob-all": "^3.1.0",
         "axios": "^0.19.2",
+        "glob-all": "^3.1.0",
         "tailwindcss": "^1.2.0",
         "vue": "^2.6.11",
         "vue-router": "^3.1.6",
         "vuex": "^3.1.2",
+        "vuex-map-fields": "^1.4.0",
         "vuex-persistedstate": "^2.7.1",
         "vuex-router-sync": "^5.0.0"
     }

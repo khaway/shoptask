@@ -20,9 +20,9 @@
                     <tbody v-if="items">
                         <cart-item-row v-for="item in items" :item="item" v-bind:key="item.id"></cart-item-row>
                         <tr class="hover:bg-grey-lighter">
-                            <td class="py-4 px-6 border-b border-grey-light font-bold">Total</td>
-                            <td class="py-4 px-6 border-b border-grey-light font-bold">{{ totalPrice }}$</td>
-                            <td class="py-4 px-6 border-b border-grey-light font-bold">{{ totalCount }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light font-bold text-center">Total</td>
+                            <td class="py-4 px-6 border-b border-grey-light font-bold text-center">{{ totalPrice }}$</td>
+                            <td class="py-4 px-6 border-b border-grey-light font-bold text-center">{{ totalCount }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -37,7 +37,8 @@
 </template>
 
 <script>
-    import { mapState } from "vuex";
+    import { mapGetters } from "vuex";
+    import { mapMultiRowFields } from 'vuex-map-fields';
     import CartItemRow from "../components/CartItemRow";
 
     export default {
@@ -45,7 +46,8 @@
             CartItemRow
         },
         computed: {
-            ...mapState('cart', ['totalCount', 'totalPrice', 'items'])
+            ...mapGetters('cart', ['totalPrice', 'totalCount']),
+            ...mapMultiRowFields('cart', ['items'])
         },
         methods: {
 

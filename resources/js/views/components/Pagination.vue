@@ -1,57 +1,19 @@
 <template>
-    <ul class="pagination">
-        <li v-if="pagination.current_page > 1">
-            <a href="javascript:void(0)" aria-label="Previous" v-on:click.prevent="changePage(pagination.current_page - 1)">
-                <span aria-hidden="true">«</span>
-            </a>
-        </li>
-        <li v-for="page in pagesNumber" :class="{'active': page == pagination.current_page}">
-            <a href="javascript:void(0)" v-on:click.prevent="changePage(page)">{{ page }}</a>
-        </li>
-        <li v-if="pagination.current_page < pagination.last_page">
-            <a href="javascript:void(0)" aria-label="Next" v-on:click.prevent="changePage(pagination.current_page + 1)">
-                <span aria-hidden="true">»</span>
-            </a>
-        </li>
+    <ul class="flex list-reset border border-grey-light rounded w-1/4 font-sans">
+        <li><a class="block hover:text-white hover:bg-blue text-blue border-r border-grey-light px-3 py-2" v-bind:href="pagination.prev_page_url">Previous</a></li>
+        <li><a class="block hover:text-white hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="#">{{ pagination.current_page }} / {{ pagination.total }}</a></li>
+        <li><a class="block hover:text-white hover:bg-blue text-blue px-3 py-2" :href="pagination.next_page_url">Next</a></li>
     </ul>
 </template>
 <script>
-    export default{
-        props: {
-            pagination: {
-                type: Object,
-                required: true
-            },
-            offset: {
-                type: Number,
-                default: 4
-            }
-        },
+    import { mapGetters } from 'vuex';
+
+    export default {
         computed: {
-            pagesNumber() {
-                if (!this.pagination.to) {
-                    return [];
-                }
-                let from = this.pagination.current_page - this.offset;
-                if (from < 1) {
-                    from = 1;
-                }
-                let to = from + (this.offset * 2);
-                if (to >= this.pagination.last_page) {
-                    to = this.pagination.last_page;
-                }
-                let pagesArray = [];
-                for (let page = from; page <= to; page++) {
-                    pagesArray.push(page);
-                }
-                return pagesArray;
-            }
+            ...mapGetters('catalog', ['pagination'])
         },
-        methods : {
-            changePage(page) {
-                this.pagination.current_page = page;
-                this.$emit('paginate');
-            }
+        mounted() {
+            console.log(this.pagination.next_page_url)
         }
     }
 </script>

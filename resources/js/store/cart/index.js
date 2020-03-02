@@ -1,3 +1,5 @@
+import { getField, updateField } from 'vuex-map-fields';
+
 export default {
     namespaced: true,
     state: {
@@ -6,11 +8,29 @@ export default {
         totalPrice: 0
     },
     getters: {
+        getField,
         items: state => state.items,
-        totalPrice: state => state.totalPrice,
-        totalCount: state => state.totalCount,
+        totalPrice: (state) => {
+            var price = 0;
+
+            state.items.forEach((item) => {
+                price += (item.quantity * item.price)
+            })
+
+            return price;
+        },
+        totalCount: (state) => {
+            var count = 0;
+
+            state.items.forEach((item) => {
+                count += Number.parseInt(item.quantity)
+            })
+
+            return count;
+        },
     },
     mutations: {
+        updateField,
         clear(state) {
             state.items = [];
             state.totalPrice = 0;
@@ -25,8 +45,8 @@ export default {
                 state.items.push(item);
             }
 
-            state.totalPrice += item.quantity * item.price;
-            state.totalCount += item.quantity;
+            // state.totalPrice += item.quantity * item.price;
+            // state.totalCount += item.quantity;
         }
     }
 };
