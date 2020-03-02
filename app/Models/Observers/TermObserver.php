@@ -4,6 +4,11 @@ namespace App\Models\Observers;
 
 use App\Models\Term;
 
+/**
+ * Class TermObserver
+ *
+ * @package App\Models\Observers
+ */
 class TermObserver
 {
     /**

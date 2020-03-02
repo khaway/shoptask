@@ -1,27 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import cart from './cart'
-import catalog from './catalog'
-import createPersistedState from 'vuex-persistedstate';
+import state from "./state";
+import modules from "./modules";
+import plugins from "./plugins";
 
 Vue.use(Vuex);
 
 export function createStore () {
     return new Vuex.Store({
-        state: {
-            ...window.laravel
-        },
-        modules: {
-            cart,
-            catalog
-        },
-        plugins: [createPersistedState({
-            paths: [
-                'cart.items',
-                'cart.totalCount',
-                'cart.totalPrice',
-                'catalog.filters.chosen'
-            ]
-        })]
+        state,
+        modules,
+        plugins
     })
 }

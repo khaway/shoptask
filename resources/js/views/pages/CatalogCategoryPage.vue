@@ -28,7 +28,6 @@
             }
         },
         mounted() {
-            console.log(this.products);
             this.loadCategoryProducts(this.routeId());
         },
         methods: {

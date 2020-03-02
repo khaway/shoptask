@@ -1,5 +1,4 @@
-@import "~@fortawesome/fontawesome-free/css/all.css";
-@import "tailwind.css";
+@import "bootstrap.css";
 
 .fade-enter-active, .fade-leave-active {
     transition: all .2s ease;

@@ -6,6 +6,11 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class ProductController
+ *
+ * @package App\Http\Controllers\API
+ */
 class ProductController extends Controller
 {
     /**
@@ -13,7 +18,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         return Product::orderBy('created_at', 'desc')->paginate(10);
     }

@@ -21,9 +21,7 @@
     import Sidebar from "../partials/Sidebar";
 
     export default {
-        components: {
-            Sidebar
-        },
+        components: { Sidebar },
         data() {
             return {
                 item: {}
@@ -58,6 +56,8 @@
                     price: this.item.price,
                     name: this.item.name
                 })
+
+                this.$alert.success('Added to cart!')
             }
         }
     }

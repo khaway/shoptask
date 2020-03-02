@@ -4,6 +4,11 @@ namespace App\Models\Observers;
 
 use App\Models\{Term, Taxonomy};
 
+/**
+ * Class TaxonomyObserver
+ *
+ * @package App\Models\Observers
+ */
 class TaxonomyObserver
 {
     /**

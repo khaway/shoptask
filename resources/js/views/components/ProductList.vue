@@ -6,7 +6,7 @@
             </div>
             <pagination></pagination>
         </div>
-        <div v-if="!products.length">No products in category...</div>
+        <div v-else>No products in category...</div>
     </div>
 </template>
 
@@ -15,11 +15,7 @@
     import ProductListItem from "./ProductListItem";
 
     export default {
-        components: {
-            ProductListItem, Pagination
-        },
-        props: {
-            products: Array
-        }
+        components: { ProductListItem, Pagination },
+        props: { products: Array }
     }
 </script>

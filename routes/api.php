@@ -27,4 +27,5 @@ Route::resource('products', ProductController::class);
 Route::resource('delivery_types', DeliveryTypeController::class);
 Route::resource('products_categories', ProductCategoryController::class);
 
-Route::name('products_visits.increment')->post('products/visits/increment', ProductVisitController::class);
+Route::name('products_visits.increment')
+    ->post('products/visits/increment', ProductVisitController::class);

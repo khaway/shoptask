@@ -32,7 +32,7 @@
                 Proceed to checkout
             </router-link>
         </div>
-        <div v-if="!items.length">Not items..</div>
+        <div v-else>Not items..</div>
     </div>
 </template>
 

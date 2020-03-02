@@ -45,7 +45,7 @@
                 </button>
             </form>
         </div>
-        <div v-if="!items.length">Cart is empty...</div>
+        <div v-else>Cart is empty...</div>
     </div>
 </template>
 
@@ -77,7 +77,8 @@
                 this.$http.post(this.apiUrls.orders.store, {
                     items: this.items.map((item) => item['id']),
                     ...this.fields
-                }).then(response => {
+                }).then(() => {
+                    this.$alert.success('Checkout success')
                     this.$store.commit('cart/clear')
                 });
             }

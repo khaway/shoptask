@@ -20,9 +20,7 @@
 
 <script>
     export default {
-        props: {
-            item: Object
-        },
+        props: { item: Object },
         methods: {
             addToCart() {
                 this.$store.commit('cart/addItem', {
@@ -31,6 +29,8 @@
                     price: this.item.price,
                     name: this.item.name
                 })
+
+                this.$alert.success('Added to cart!')
             }
         }
     }

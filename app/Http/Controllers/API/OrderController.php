@@ -6,6 +6,11 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class OrderController
+ *
+ * @package App\Http\Controllers\API
+ */
 class OrderController extends Controller
 {
     /**
@@ -38,7 +43,9 @@ class OrderController extends Controller
     {
         return Order::create($request->only([
             'initials', 'phone', 'delivery_address', 'delivery_type'
-        ]))->products()->sync($request->items);
+        ]))
+            ->products()
+            ->sync($request->items);
     }
 
     /**

@@ -6,6 +6,11 @@ use App\Models\DeliveryType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class DeliveryTypeController
+ *
+ * @package App\Http\Controllers\API
+ */
 class DeliveryTypeController extends Controller
 {
     /**

@@ -11,9 +11,6 @@
     export default {
         computed: {
             ...mapGetters('catalog', ['pagination'])
-        },
-        mounted() {
-            console.log(this.pagination.next_page_url)
         }
     }
 </script>

@@ -21,6 +21,8 @@ class ProductVisitController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Product::findOrFail($request->id)->visits()->increment();
+        return Product::findOrFail($request->id)
+            ->visits()
+            ->increment();
     }
 }

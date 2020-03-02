@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class CatalogController
+ *
+ * @package App\Http\Controllers\API
+ */
 class CatalogController extends Controller
 {
     /**
@@ -47,9 +52,9 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-        $productCategory = ProductCategory::findOrFail($id);
-
-        return $productCategory->products()->paginate(10);
+        return ProductCategory::findOrFail($id)
+            ->products()
+            ->paginate(10);
     }
 
     /**

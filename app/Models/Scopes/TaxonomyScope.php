@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Class TaxonomyScope
+ *
+ * @package App\Models\Scopes
+ */
 class TaxonomyScope implements Scope
 {
     /**

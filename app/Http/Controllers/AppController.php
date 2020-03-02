@@ -2,33 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\ProductCategory;
-
+/**
+ * Class AppController
+ *
+ * @package App\Http\Controllers
+ */
 class AppController extends Controller
 {
     /**
+     * Handle the incoming request.
      *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function __invoke()
     {
-        // Product::find(1)->categories()->sync(1);
-        //
-        // Product::create([
-        //    'name' => 'sooome2'
-        // ]);
-        //
-
-        //
-        // ProductCategory::create([
-        //    'name' => 'some2223123!',
-        //     'children' => [
-        //         ['name' => 'sure']
-        //     ]
-        // ]);
-        //
-        // dd(123);
-
         return view('app');
     }
 }

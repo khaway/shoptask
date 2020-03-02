@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class ProductCategoryController
+ *
+ * @package App\Http\Controllers\API
+ */
 class ProductCategoryController extends Controller
 {
     /**

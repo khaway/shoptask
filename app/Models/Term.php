@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Term
+ *
+ * @package App\Models
+ */
 class Term extends Model
 {
     /**

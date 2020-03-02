@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Taxonomy
+ *
+ * @package App\Models
+ */
 class Taxonomy extends Model
 {
     use Concerns\HasTermFillableAttributes;

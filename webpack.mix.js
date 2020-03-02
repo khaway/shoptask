@@ -36,4 +36,4 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-// mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');
+mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');
