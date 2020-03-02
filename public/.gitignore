@@ -1,2 +1,4 @@
 *.js
-/public/*.js
+/js/*.js
+/css/*.css
+mix-manifest.json
