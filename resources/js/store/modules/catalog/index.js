@@ -3,9 +3,11 @@ import { getField, updateField } from 'vuex-map-fields';
 export default {
     namespaced: true,
     state: {
-        products: {},
-        products_categories: [],
+        pagination: {
+            data: []
+        },
         last_page: 1,
+        products_categories: [],
         filters: {
             chosen: [],
         }
@@ -19,11 +21,11 @@ export default {
                 }
 
                 return products;
-            }, state.products.data)
+            }, state.pagination.data)
         },
         products_categories: state => state.products_categories,
         filtredByQuantity(state) {
-            return state.products.filter(product => {
+            return state.pagination.data.filter(product => {
                 return product.quantity
             })
         }
@@ -33,8 +35,8 @@ export default {
         LOAD_PRODUCTS_CATEGORIES(state, products_categories) {
             state.products_categories = products_categories
         },
-        LOAD_PRODUCTS(state, products) {
-            state.products = products
+        SET_PAGINATION(state, pagination) {
+            state.pagination = pagination
         },
         SET_LAST_PAGE(state, page) {
             state.last_page = page
@@ -52,7 +54,7 @@ export default {
             app.$http.get(rootState.apiUrls.products.index, {
                 params: { page }
             }).then(response => {
-                commit('LOAD_PRODUCTS', response.data)
+                commit('SET_PAGINATION', response.data)
                 commit('SET_LAST_PAGE', page);
             })
         },
@@ -61,7 +63,7 @@ export default {
             app.$http.get(rootState.apiUrls.catalog.show +  `/${categoryId}`, {
                 params: { page }
             }).then(response => {
-                commit('LOAD_PRODUCTS', response.data)
+                commit('SET_PAGINATION', response.data)
                 commit('SET_LAST_PAGE', page);
             })
         }

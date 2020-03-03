@@ -4,7 +4,8 @@ export default [
     createPersistedState({
         paths: [
             'cart.items',
-            'catalog.filters.chosen'
+            'catalog.filters.chosen',
+            'catalog.last_page'
         ]
     })
 ]
