@@ -18,4 +18,6 @@ php artisan db:seed
 cp .env.example .env
 
 yarn install
+
+yarn run production
 ```
