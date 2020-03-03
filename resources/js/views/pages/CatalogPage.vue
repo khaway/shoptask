@@ -7,25 +7,35 @@
             <div class="w-3/4 h-12 p-4">
                 <h1 class="text-5xl mb-6">Last Products</h1>
                 <product-list :products="products"></product-list>
+                <pagination :data="paginate" @pagination-change-page="loadAllProducts"></pagination>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import { mapGetters, mapState } from 'vuex';
     import Sidebar from '../partials/Sidebar';
     import ProductList from "../components/ProductList";
 
     export default {
         components: { Sidebar, ProductList },
         computed: {
+            ...mapState('catalog', {
+                paginate: state => state.products
+            }),
             ...mapGetters('catalog', ['products'])
         },
         created() {
-            this.$store.dispatch('catalog/loadLastProducts', {
-                app: this
-            })
+            this.loadAllProducts()
+        },
+        methods: {
+            loadAllProducts(page = 1) {
+                this.$store.dispatch('catalog/loadAllProducts', {
+                    app: this,
+                    page
+                })
+            }
         }
     }
 </script>

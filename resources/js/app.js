@@ -11,6 +11,9 @@ Vue.prototype.$http = createAxios()
 // Bind alerts.
 Vue.prototype.$alert = require('alertifyjs')
 
+// Register pagination component.
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 // Create vuex store and vue router.
 const store = createStore()
 const router = createRouter()

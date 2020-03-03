@@ -3,9 +3,9 @@ import { getField, updateField } from 'vuex-map-fields';
 export default {
     namespaced: true,
     state: {
-        products: [],
+        products: {},
         products_categories: [],
-        pagination: {},
+        last_page: 1,
         filters: {
             chosen: [],
         }
@@ -19,10 +19,9 @@ export default {
                 }
 
                 return products;
-            }, state.products)
+            }, state.products.data)
         },
         products_categories: state => state.products_categories,
-        pagination: state => state.pagination,
         filtredByQuantity(state) {
             return state.products.filter(product => {
                 return product.quantity
@@ -37,9 +36,9 @@ export default {
         LOAD_PRODUCTS(state, products) {
             state.products = products
         },
-        SET_PAGINATION(state, pagination) {
-            state.pagination = pagination
-        },
+        SET_LAST_PAGE(state, page) {
+            state.last_page = page
+        }
     },
     actions: {
         async loadProductsCategories({ commit, rootState }, { app }) {
@@ -49,23 +48,12 @@ export default {
                 })
         },
 
-        async loadLastProducts({commit, rootState}, { app }) {
-            app.$http.get(rootState.apiUrls.products.index).then(response => {
-                console.log(response.data);
-                commit('LOAD_PRODUCTS', response.data.data)
-                commit('SET_PAGINATION', {
-                    current_page: response.data.current_page,
-                    first_page_url: response.data.first_page_url,
-                    from: response.data.from,
-                    last_page: response.data.last_page,
-                    last_page_url: response.data.last_page_url,
-                    next_page_url: response.data.next_page_url,
-                    path: response.data.path,
-                    per_page: response.data.per_page,
-                    prev_page_url: response.data.prev_page_url,
-                    to: response.data.to,
-                    total: response.data.total
-                })
+        async loadAllProducts({commit, rootState}, { app, page }) {
+            app.$http.get(rootState.apiUrls.products.index, {
+                params: { page }
+            }).then(response => {
+                commit('LOAD_PRODUCTS', response.data)
+                commit('SET_LAST_PAGE', page);
             })
         },
 
@@ -73,20 +61,8 @@ export default {
             app.$http.get(rootState.apiUrls.catalog.show +  `/${categoryId}`, {
                 params: { page }
             }).then(response => {
-                commit('LOAD_PRODUCTS', response.data.data)
-                commit('SET_PAGINATION', {
-                    current_page: response.data.current_page,
-                    first_page_url: response.data.first_page_url,
-                    from: response.data.from,
-                    last_page: response.data.last_page,
-                    last_page_url: response.data.last_page_url,
-                    next_page_url: response.data.next_page_url,
-                    path: response.data.path,
-                    per_page: response.data.per_page,
-                    prev_page_url: response.data.prev_page_url,
-                    to: response.data.to,
-                    total: response.data.total
-                })
+                commit('LOAD_PRODUCTS', response.data)
+                commit('SET_LAST_PAGE', page);
             })
         }
     }

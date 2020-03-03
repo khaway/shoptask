@@ -1,5 +1,15 @@
 @import "bootstrap.css";
 
+.pagination {
+    display: flex;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    margin-left: 2rem;
+}
+
 .fade-enter-active, .fade-leave-active {
     transition: all .2s ease;
 }

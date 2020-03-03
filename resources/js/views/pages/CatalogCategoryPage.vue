@@ -7,37 +7,39 @@
             <div class="w-3/4 h-12 p-4">
                 <h1 class="text-5xl mb-6">Category Products</h1>
                 <product-list :products="products"></product-list>
+                <pagination :data="paginate" @pagination-change-page="loadCategoryProducts"></pagination>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from "vuex";
+    import { mapGetters, mapState } from "vuex";
     import Sidebar from "../partials/Sidebar";
     import ProductList from "../components/ProductList";
 
     export default {
         components: { Sidebar, ProductList },
         computed: {
+            ...mapState('catalog', {
+                paginate: state => state.products
+            }),
             ...mapGetters('catalog', ['products'])
         },
         watch: {
             '$route.params.id': function () {
-                this.loadCategoryProducts(this.routeId());
+                this.loadCategoryProducts();
             }
         },
         mounted() {
-            this.loadCategoryProducts(this.routeId());
+            this.loadCategoryProducts();
         },
         methods: {
-            routeId() {
-                return this.$route.params.id;
-            },
-            loadCategoryProducts(categoryId) {
+            loadCategoryProducts(page = 1) {
                 this.$store.dispatch('catalog/loadCategoryProducts', {
                     app: this,
-                    categoryId
+                    categoryId: this.$route.params.id,
+                    page
                 })
             }
         }
